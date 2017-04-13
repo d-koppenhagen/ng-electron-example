@@ -1,14 +1,11 @@
 import { app, BrowserWindow } from 'electron';
 
-export default class ElectronApp {
+class ElectronApp {
   static app: Electron.App;
   static mainWindow: Electron.BrowserWindow;
   static BrowserWindow;
 
-  static main(
-    app: Electron.App,
-    browserWindow: typeof BrowserWindow
-  ) {
+  static main(app: Electron.App, browserWindow: typeof BrowserWindow) {
     ElectronApp.app = app;
     ElectronApp.BrowserWindow = browserWindow;
     ElectronApp.app.on('ready', ElectronApp.onReady);
@@ -25,11 +22,11 @@ export default class ElectronApp {
       resizable: false,
       titleBarStyle: 'hidden',
       title: 'Angular Electron Example App',
-      icon: __dirname + '/favicon.ico'
+      icon: `${__dirname}/favicon.ico`
     });
 
     // load index.html
-    ElectronApp.mainWindow.loadURL('file://' + __dirname + '/index.html');
+    ElectronApp.mainWindow.loadURL(`file://${__dirname}/index.html`);
 
     // close the window
     ElectronApp.mainWindow.on('closed', ElectronApp.onClose);
